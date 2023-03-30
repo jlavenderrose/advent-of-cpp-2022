@@ -30,10 +30,14 @@ cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
 # the ModernCppStarter defines an example project called 'Greeter'
 # CPMAddPackage("gh:TheLartians/ModernCppStarter@0.17.2")
 
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/source/days/*.h")
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/source/days/*.cpp")
+
 # ---- Create executable ----
 
 # add your source files here
-add_executable(aoc22 src/main.cpp)
+add_executable(aoc22 source/main.cpp)
+target_sources(aoc22 PRIVATE ${sources})
 # link to your dependencies' targets here target_link_libraries(Playground
 # Greeter::Greeter) setup your target's properties
 set_target_properties(aoc22 PROPERTIES CXX_STANDARD 17)
